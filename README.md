@@ -165,9 +165,8 @@ hit. The program runs fine without it.
 
 ## Authors
 
-Two-person robotics course project by **Nisa Maaşoğlu**
-([@nisamaasoglu](https://github.com/nisamaasoglu)) and **Özge Bilici**
-(Aksaray University, Software Engineering, 2025).
+Project by **Nisa Maaşoğlu**
+([@nisamaasoglu](https://github.com/nisamaasoglu))
 This repository contains the PC-side control and computer-vision software.
 
 ## License
