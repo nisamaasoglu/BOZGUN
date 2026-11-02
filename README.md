@@ -1,5 +1,7 @@
 # BOZGUN — Autonomous Colour-Tracking Turret
 
+[![CI](https://github.com/nisamaasoglu/BOZGUN/actions/workflows/ci.yml/badge.svg)](https://github.com/nisamaasoglu/BOZGUN/actions/workflows/ci.yml)
+
 **Real-time, colour-based target tracking and laser marking on low-cost hardware.**
 A standard webcam finds a colour-marked target (a **blue LED**, matching the
 default HSV range), a Python/OpenCV pipeline converts its pixel position into
@@ -83,6 +85,7 @@ Webcam ─▶ HSV threshold ─▶ morphology ─▶ contours ─▶ centroid tr
 | `bozgun.py` | Main control application: vision pipeline, tracker, aiming, serial. |
 | `config.py` | All tunable parameters (ports, HSV defaults, servo limits, timings). |
 | `firmware/bozgun_firmware.ino` | Reference Arduino firmware implementing the serial protocol. |
+| `tests/` | Pytest suite: tracker identity and expiry, calibration persistence, synthetic-target detection, safety limits. |
 | `docs/` | Images used in this README. |
 | `requirements.txt` | Python dependencies. |
 
@@ -137,6 +140,16 @@ python bozgun.py
 
 For the Arduino side, open `firmware/bozgun_firmware.ino` in the Arduino IDE,
 set the pin numbers to match your wiring, and upload it.
+
+### Tests
+
+```bash
+pip install pytest
+python -m pytest -q tests
+```
+
+The suite runs without a webcam or an Arduino: the tracker is fed centroids directly and the
+synthetic camera frame is checked against the default HSV range. CI runs it on Python 3.10–3.12.
 
 ### Controls
 
